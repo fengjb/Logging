@@ -6,7 +6,7 @@ namespace Microsoft.Extensions.Logging.Log4Net
     {
         public static ILoggerFactory AddLog4Net(
             this ILoggerFactory factory,
-            global::log4net.Core.ILogger logFactory)
+            global::log4net.ILog logFactory)
         {
             factory.AddProvider(new Log4Net.Log4NetLoggerProvider(logFactory));
             return factory;

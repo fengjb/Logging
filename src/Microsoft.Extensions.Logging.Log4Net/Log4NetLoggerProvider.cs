@@ -6,9 +6,9 @@ namespace Microsoft.Extensions.Logging.Log4Net
     public class Log4NetLoggerProvider : ILoggerProvider
     {
 
-        private readonly global::log4net.Core.ILogger _logFactory;
+        private readonly global::log4net.ILog _logFactory;
 
-        public Log4NetLoggerProvider(global::log4net.Core.ILogger logFactory)
+        public Log4NetLoggerProvider(global::log4net.ILog logFactory)
         {
 
             _logFactory = logFactory;
@@ -22,9 +22,9 @@ namespace Microsoft.Extensions.Logging.Log4Net
 
         private class Logger : ILogger
         {
-            private readonly global::log4net.Core.ILogger _logger;
+            private readonly global::log4net.ILog _logger;
 
-            public Logger(global::log4net.Core.ILogger logger)
+            public Logger(global::log4net.ILog logger)
             {
                 _logger = logger;
             }
@@ -46,7 +46,7 @@ namespace Microsoft.Extensions.Logging.Log4Net
             /// <returns></returns>
             public bool IsEnabled(LogLevel logLevel)
             {
-                return _logger.IsEnabledFor(GetLogLevel(logLevel));
+                return _logger.Logger.IsEnabledFor(GetLogLevel(logLevel));
             }
 
             /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Extensions.Logging.Log4Net
                 if (!string.IsNullOrEmpty(message))
                 {
                     ///new System.Diagnostics.StackTrace().GetFrame(1).GetType()   GetFrame获取调用类
-                    _logger.Log(new System.Diagnostics.StackTrace().GetFrame(1).GetType(), nLogLogLevel, message, exception);
+                    _logger.Logger.Log(new System.Diagnostics.StackTrace().GetFrame(1).GetType(), nLogLogLevel, message, exception);
 
                 }
             }
