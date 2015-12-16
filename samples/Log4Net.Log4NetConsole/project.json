@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0-*",
+  "description": "Log4Net.Log4NetConsole Console Application",
+  "authors": [ "FengJunBiao" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "compilationOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "Microsoft.Extensions.Configuration": "1.0.0-rc1-final",
+    "Microsoft.Extensions.Logging": "1.0.0-rc2-15886"
+  },
+
+  "commands": {
+    "Log4Net.Log4NetConsole": "Log4Net.Log4NetConsole"
+  },
+
+  "frameworks": {
+    "dnx451": {
+      "dependencies": {
+        "log4net": "2.0.0",
+        "Microsoft.Extensions.Logging.Log4Net": "1.0.0-*"
+      }
+    },
+    "dnxcore50": {
+      "dependencies": {
+        "Microsoft.CSharp": "4.0.1-beta-23516",
+        "System.Collections": "4.0.11-beta-23516",
+        "System.Console": "4.0.0-beta-23516",
+        "System.Linq": "4.0.1-beta-23516",
+        "System.Threading": "4.0.11-beta-23516"
+      }
+    }
+  }
+}
